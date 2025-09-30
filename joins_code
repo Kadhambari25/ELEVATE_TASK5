@@ -1,0 +1,23 @@
+-- Task 5
+-- inner join
+use carrental;
+SELECT r.Rental_No, c.Name AS Customer_Name, car.Model AS Car_Model, r.Amount_Due
+FROM RENTALS r
+INNER JOIN CUSTOMER c ON r.Cust_ID = c.Cust_ID
+INNER JOIN CAR car ON r.Vehicle_ID = car.Vehicle_ID;
+-- left join
+SELECT c.Cust_ID, c.Name, r.Rental_No, r.Amount_Due
+FROM CUSTOMER c
+LEFT JOIN RENTALS r ON c.Cust_ID = r.Cust_ID;
+-- right join
+SELECT r.Rental_No, c.Name, r.Amount_Due
+FROM CUSTOMER c
+RIGHT JOIN RENTALS r ON c.Cust_ID = r.Cust_ID;
+-- full outer join
+SELECT c.Cust_ID, c.Name, r.Rental_No, r.Amount_Due
+FROM CUSTOMER c
+LEFT JOIN RENTALS r ON c.Cust_ID = r.Cust_ID
+UNION
+SELECT c.Cust_ID, c.Name, r.Rental_No, r.Amount_Due
+FROM CUSTOMER c
+RIGHT JOIN RENTALS r ON c.Cust_ID = r.Cust_ID;
